@@ -1,27 +1,30 @@
-# serverless-galleria
+# Copy and Tranform eml to markdown
 
-Serverless batch manipulation and publishing - Warning this is a WIP expect errors and changes.
+Copy and markdown eml file format using Lambda.
 
-### Transformations
-A transform owns an S3 bucket, which it watches for incoming files.  When files are added, it runs a lambda function to transform the images and place them in another S3 bucket
+## Deploy with CloudFormation
 
-![transform](diagrams/transform.png)
+Prerequisites: [Node.js](https://nodejs.org/en/) and [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed
 
-* [compress](compress) - Apply the transform to markdownthe file
+* Create an [AWS](https://aws.amazon.com/) Account and [IAM User](https://aws.amazon.com/iam/) with the `AdministratorAccess` AWS [Managed Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
+* Run `aws configure` to put store that user's credentials in `~/.aws/credentials`
+* Create an S3 bucket for storing the Lambda code and store its name in a shell variable with:
+  * `export CODE_BUCKET=bucket`
+* Create the S3 bucket for the compressed output, store its name in shell variable:
+  * `export DEST_BUCKET=bucket`
+* Choose a name, but do NOT create the S3 bucket input comes from, store its name in shell variable:
+  * `export SOURCE_BUCKET=bucket`
+* Choose the JPEG compression quality, 1 to 100, 100 is best quality/largest file, (See [docs](http://www.graphicsmagick.org/GraphicsMagick.html#details-quality)), store it in shell variable:
+  * `export QUALITY=25`
+* Npm install:
+  * `npm install`
+* Build:
+  * `npm run build`
+* Upload package to S3, transform the CloudFormation template:
+  * `npm run package`
+* Deploy to CloudFormation:
+  * `npm run deploy`
 
-## Setup
-First, plan your pipeline, as you'll build it backwards.  Here's a sample:
 
-![pipeline](diagrams/pipeline.png)
-
-### Steps
-1. Deploy Application
-    1.a S3 bucket bucket must already exist, as it's not owned by any transformations
-    1.b Deploy the transform, with the tobetransformed bucket as its source, and markdown bucket as its destination
 ## License
-Inspired by &copy; 2017-2018 [Evan Chiu](https://evanchiu.com). This project is available under the terms of the MIT license.
-
-## To Do
-Renaming from compress to markdown.
-Code the markdown transformation.
-Write to output bucket in put into test harness before gatsby site uses markdown files
+Based on &copy; 2017-2018 [Evan Chiu](https://evanchiu.com). This project is available under the terms of the MIT license.
