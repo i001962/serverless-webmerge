@@ -1,0 +1,122 @@
+Return-Path: <xxxxxx@xxxxxxxxerleaf.net>
+Received: from mail-ot0-f179.google.com (mail-ot0-f179.google.com [74.125.82.179])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1
+ for asd@xxxxxxxxerleaf.com;
+ Fri, 27 Apr 2018 02:46:54 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of amberleaf.net designates 74.125.82.179 as permitted sender) client-ip=74.125.82.179; envelope-from=kmcdonald@xxxerleaf.net; helo=mail-ot0-f179.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of amberleaf.net designates 74.125.82.179 as permitted sender) client-ip=74.125.82.179; envelope-from=kmcdonald@xxxerleaf.net; helo=mail-ot0-f179.google.com;
+ dkim=pass header.i=@xxxxx-net.20150623.gappssmtp.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFING1ra1ZpVDJiNVFoa0p5dHFNK2cwUjJuODFaZEdYL0o0bDBMSGFEalRqT2w4Z1VtazM1RVN6N1E4Rm1yUHQrNE43QThVZHNRaVZFS2grNnEzVlBFUHRBN0I1eXo4T2prVU9qa3I1ZXJ6aTdHWThESmM1a3RLaVZJaENLcW5lUkNjalhSU3AvelRzdktISmpHMWpnNHZGU0xvcXo1WFJOZjdSQVE4d20zQlZwUkdDeFlIS1NjMHozSjlJZ08rdCtPV25BbnhzTktyd0xCVU9ScllvZ2RlVCs1R2tzK2JjM2NXQ2pNalJtVWZCVHlwQ3NwYlJkbjVRRFVHMENCeHZpb1lUZ051U054dzB0YjFSRkZjNU5WWU1ETjhIaVR0U0ZuNkNseHJRK0x6Z3c9PQ==
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=e9uU4NaZUAMGzCgVaaZB+bRIeGZYzcd/iobrJNF/32dyNfwr24oN5mkGqJFcDHEwbK6MWZV4GRIt2YSBNZkilhzspqpTQoGnDc3yFINlFrYA4cIKsFUay+GzgF/mRjf23vpN0i4kYpsaxKHDTo1ocUahpqAPMppAy7UdPaI8A+8=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1524797214; v=1; bh=1/Pd23Rbk/Vnl0poac25TXmvP8trw/BaEOeTvuARPU8=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-ot0-f179.google.com with SMTP id t1-v6so448289oth.8
+        for <asd@xxxxxtionx.com>; Thu, 26 Apr 2018 19:46:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=amberleaf-net.20150623.gappssmtp.com; s=20150623;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to;
+        bh=QhAodt3GeLT5PCOsfOT9rSUS6+CFzmR6uD4cnfM9j9A=;
+        b=t93N9BLKDbIIfch2FdwIqaCpzrj8zt3IMr1/ZWQ75msP9WVerbWiJ0SajSGb9i+DqX
+         ypMHnzVDK0LxFtpiilRgtUwswcp0w6yEZtSHeO7H4Zu4BAQIFmHixTmQ3IRekBGS4Fec
+         R0YTSiszF7R4gXLOw6MhE9L+KjoajlUKW+12tvivQS5eKluNlfWY8l/1J5ZxMqFtGE2j
+         bdRo4+8khp+LZAD36EGfdXG6yzUSaL9lqMxamyYbtB9LVHIyLv+aUMYljQ/b5HwMumKb
+         LzFK489CW4J0j5urScQNLfd6ehSl58dLp735TfsneRGevbd4+czfgdo0kxUBsSI6lzz1
+         YLgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to;
+        bh=QhAodt3GeLT5PCOsfOT9rSUS6+CFzmR6uD4cnfM9j9A=;
+        b=gzoCjQvAks/MmP+gP38hCwIOjpxq5gktunkxGcdHe5TeMx6WyGcm0nm9gCqyfUgO1s
+         jhhPeBSmX59kLfSn6DTnnxRsInjUEy2s3anoZGmCZndZNK8uSjUq9jtTpgdkdDVFk+t3
+         wSdphVuS0Z512RVFfKR3MN6W7DJTQ6cXFR26U+BLuJ2jpN3USolxJUhyvXW+6hBWR40w
+         llP3uCL7gH8DIxdqX8zGL0t+15e5OzESUW+y2ZOami5SpxPlBDQdG//naqgFdetXCfEM
+         Nglyeh1g82n9alpGxGEULBRqUh41XGYdKChnHkB+BjjfYxiO2/DNuug1ppl6L+Y65gAQ
+         PO3Q==
+X-Gm-Message-State: ALQs6tCsqtJA56/HaFq6rTPJjDN2pzi73JJZtKU3XqFD4xzLYlQZdHc9
+	FTejBteSFr/12P9O4sV0o2j/1ETo2A7D8dslQxBqyQ==
+X-Google-Smtp-Source: AB8JxZrJEI/kwcKZG4ao0j7wxBVXUL9XSBWF1PCrOOuUrt0NfzNDbjEeEwGQSHKuEuuuEeM3cbW77kUPDw/z915OkBE=
+X-Received: by 2002:a9d:3f6:: with SMTP id f109-v6mr310448otf.228.1524797213752;
+ Thu, 26 Apr 2018 19:46:53 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.74.85.144 with HTTP; Thu, 26 Apr 2018 19:46:53 -0700 (PDT)
+In-Reply-To: <1358265047.1088131400.1524735568416.JavaMail.root@xxxxs01.marketo.org>
+References: <1358265047.1088131400.1524735568416.JavaMail.root@xxxxs01.marketo.org>
+From: Kevin McDonald <kmcdonald@xxxerleaf.net>
+Date: Thu, 26 Apr 2018 19:46:53 -0700
+Message-ID: <CAO9=k6HyMSX9fvpTn7VNFWNWRdy3RRsn1mzyLxS-4T9obQb5Kg@xxxx.gmail.com>
+Subject: Fwd: Probable tobacco Contact Us filled out by: frankieninja@xxxxx.co.uk
+To: asd@xxxxxtionx.com
+Content-Type: multipart/alternative; boundary="00000000000047d151056acb846a"
+
+--00000000000047d151056acb846a
+Content-Type: text/plain; charset="UTF-8"
+
+An auto-response has already been sent to this email address.  There is no
+need to reply if it is a tobacco contact.
+
+Repsond to: frankieninja@xxxxx.co.uk
+
+Phone:
+
+About: Hi I've been an Amberleaf smoker for a brave while now. I have a
+complaint. The Double packs of papers that are with the tobacco are really
+no good. When I get through half the packet they go all over the place. Can
+you not put single packs in again please...
+
+
+
+--
+Kevin McDonald
+Amberleaf
+m +1 650 xxx-8149
+o +1 312 xxx-6120
+
+--00000000000047d151056acb846a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_quote"><br><br><u></u>
+
+=20
+=20
+<div>=20
+<div id=3D"m_3756303030595573354body" class=3D"m_3756303030595573354mktoTex=
+t" style=3D"font-family:Helvetica,Arial,Sans-Serif;padding:10px">
+<div>
+<span style=3D"color:#231f20;font-family:Nylas-Pro,Helvetica,&#39;Lucidia G=
+rande&#39;,sans-serif;font-size:14.5px;font-style:normal;font-variant-ligat=
+ures:normal;font-variant-caps:normal;font-weight:normal;letter-spacing:norm=
+al;text-align:start;text-indent:0px;text-transform:none;white-space:normal;=
+word-spacing:0px;display:inline!important;float:none">An auto-response has =
+already been sent to this email address.=C2=A0 There is no need to reply if=
+ it is a tobacco contact.</span>
+</div>=20
+<div>
+<span style=3D"color:#231f20;font-family:Nylas-Pro,Helvetica,&#39;Lucidia G=
+rande&#39;,sans-serif;font-size:14.5px;font-style:normal;font-variant-ligat=
+ures:normal;font-variant-caps:normal;font-weight:normal;letter-spacing:norm=
+al;text-align:start;text-indent:0px;text-transform:none;white-space:normal;=
+word-spacing:0px;display:inline!important;float:none"></span>
+</div>=20
+<div>
+<br>
+</div>=20
+<div></div>=20
+<p>Repsond to:=C2=A0<a href=3D"mailto:frankieninja@xxxxx.co.uk" target=3D=
+"_blank">frankieninja@xxxxx.co.uk</a></p>=20
+<p>Phone:=C2=A0</p>=20
+<p>About:=C2=A0Hi I&#39;ve been an Amberleaf smoker for a brave while now. =
+I have a complaint. The Double packs of papers that are with the tobacco ar=
+e really no good. When I get through half the packet they go all over the p=
+lace. Can you not put single packs in again please...</p>
+</div> =20
+</div>
+</div><br><br clear=3D"all"><div><br></div>-- <br><div class=3D"gmail_signa=
+ture" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Kevin McDonald<di=
+v>Amberleaf</div><div>m +1 650 xxx-8149</div><div>o +1 312 xxx-6120</div></=
+div></div>
+</div>
+
+--00000000000047d151056acb846a--

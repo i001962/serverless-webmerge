@@ -1,11 +1,11 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
-Description: Transforms images by compression to a configured quality level
+Description: Merges data into document and sends it
 Resources:
   transform:
     Type: AWS::Serverless::Function
     Properties:
-      Description: Transforms images by compression to a configured quality level
+      Description: Merges data into document and sends it
       Handler: src/index.handler
       Runtime: nodejs6.10
       CodeUri: build/transform.zip
@@ -29,8 +29,8 @@ Resources:
         Variables:
           DEST_BUCKET:
             Ref: destBucket
-          QUALITY:
-            Ref: quality
+          TRANSFORMATION:
+            Ref: transformation
   source:
     Type: AWS::S3::Bucket
     Properties:
@@ -43,7 +43,7 @@ Parameters:
   destBucket:
     Type: String
     Description: Name of the S3 Bucket to put transformed images into (must exist prior to deployment)
-  quality:
+  transformation:
     Type: Number
-    Description: Quality of Jpeg output, 1 to 100, 100 is best quality/largest file
+    Description: Transformation of output, 1 to 100, 100 - Not yet implemented
     Default: 25

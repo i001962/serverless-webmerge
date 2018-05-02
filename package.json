@@ -1,31 +1,34 @@
 {
-  "name": "compress",
+  "name": "serverless-webmerge",
   "version": "1.0.0",
-  "description": "Copy and compress images using Lambda",
+  "description": "Copy and merge into document using Lambda and webmerge.me",
   "main": "src/index.js",
   "scripts": {
     "build": "node_modules/gulp/bin/gulp.js",
     "package": "aws cloudformation package --template-file template.yml --output-template-file packaged-template.yml --s3-bucket $CODE_BUCKET",
-    "deploy": "aws cloudformation deploy --template-file packaged-template.yml --capabilities CAPABILITY_IAM --stack-name dev-compress-$USER --parameter-overrides sourceBucket=$SOURCE_BUCKET destBucket=$DEST_BUCKET quality=$QUALITY"
+    "deploy": "aws cloudformation deploy --template-file packaged-template.yml --capabilities CAPABILITY_IAM --stack-name dev-compress-$USER --parameter-overrides sourceBucket=$SOURCE_BUCKET destBucket=$DEST_BUCKET transformation=$TRANSFORMATION",
+    "clean": "aws s3 rm s3://amberleaf-email-in2/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.eml && aws s3 rm s3://amberleaf-markdown-out/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.json && rm ./test/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.json",
+    "runnow": "aws s3 cp ./test/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.eml s3://amberleaf-email-in2/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.eml",
+    "check": "aws s3 cp s3://amberleaf-markdown-out/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.json ./test/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.json && open -a Atom ./test/kbq4fqlmui5et485rrjpn400o8hnptu3ri318ag1.json",
+    "ifeallucky": "npm run build && npm run package && npm run deploy && npm run clean && npm run runnow && npm run check"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/evanchiu/serverless-galleria.git"
   },
   "keywords": [
-    "Compress",
-    "Image",
-    "ImageMagick",
+    "webmerge",
     "S3",
     "Serverless"
   ],
-  "author": "Evan Chiu <evan@evanchiu.com>",
+  "author": "Kevin McDonald <i001962@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/evanchiu/serverless-galleria/issues"
+    "url": "https://github.com/i001962/serverless-webmerge/issues"
   },
-  "homepage": "https://github.com/evanchiu/serverless-galleria#readme",
+  "homepage": "https://github.com/i001962/serverless-webmerge#readme",
   "dependencies": {
+    "eml-format": "^0.5.0",
     "gm": "^1.23.1",
     "webmerge": "^1.0.2"
   },
