@@ -1,8 +1,8 @@
-# Copy and Tranform eml to markdown
+# Copy and merge - WIP expect errors
 
-Copy and markdown eml file format using Lambda.
+Copy file and merge fields using AWS Lambda and webmerge.me
 
-## Deploy with CloudFormation
+## Deploy with AWS CloudFormation and weberge.me
 
 Prerequisites: [Node.js](https://nodejs.org/en/) and [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed
 
@@ -14,8 +14,8 @@ Prerequisites: [Node.js](https://nodejs.org/en/) and [AWS CLI](http://docs.aws.a
   * `export DEST_BUCKET=bucket`
 * Choose a name, but do NOT create the S3 bucket input comes from, store its name in shell variable:
   * `export SOURCE_BUCKET=bucket`
-* Choose the JPEG compression quality, 1 to 100, 100 is best quality/largest file, (See [docs](http://www.graphicsmagick.org/GraphicsMagick.html#details-quality)), store it in shell variable:
-  * `export QUALITY=25`
+* Not yet implemented conversion type, 1 to 100, 100, store it in shell variable:
+  * `export TRANSFORMATION=25`
 * Npm install:
   * `npm install`
 * Build:
